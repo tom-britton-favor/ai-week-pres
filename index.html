@@ -7,20 +7,397 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 		/>
 
-		<title>reveal.js</title>
+		<title>fvr — AI Hack Week 2025</title>
 
 		<link rel="stylesheet" href="dist/reset.css" />
 		<link rel="stylesheet" href="dist/reveal.css" />
-		<link rel="stylesheet" href="dist/theme/black.css" />
-
-		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="dist/theme/white.css" />
 		<link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800&family=Anton&display=swap" rel="stylesheet" />
+
+		<style>
+			/* ── Favor brand tokens ───────────────────────────────────────── */
+			:root {
+				--favor-cream:   #FAF8F3;
+				--favor-navy:    #003349;
+				--favor-blue:    #0099E5;
+				--favor-orange:  #F56F10;
+				--favor-mid:     #46575E;
+				--favor-recessed:#F2EFE6;
+			}
+
+			/* ── Base typography ──────────────────────────────────────────── */
+			.reveal {
+				font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+				font-weight: 500;
+				background-color: var(--favor-cream);
+				color: var(--favor-navy);
+			}
+			.reveal h1,
+			.reveal h2 {
+				font-family: 'Anton', 'Montserrat', sans-serif;
+				font-weight: 400;
+				text-transform: uppercase;
+				letter-spacing: 0.03em;
+				color: var(--favor-navy);
+			}
+			.reveal h3,
+			.reveal h4 {
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 800;
+				color: var(--favor-navy);
+			}
+			.reveal p,
+			.reveal li {
+				color: var(--favor-navy);
+			}
+			.reveal a {
+				color: var(--favor-blue);
+			}
+			.reveal strong {
+				font-weight: 800;
+				color: var(--favor-navy);
+			}
+
+			/* ── Inline code ──────────────────────────────────────────────── */
+			.reveal code:not(pre code) {
+				background: var(--favor-recessed);
+				color: var(--favor-navy);
+				border-radius: 4px;
+				padding: 0.05em 0.35em;
+				font-size: 0.9em;
+			}
+
+			/* ── Stage label ──────────────────────────────────────────────── */
+			.stage-label {
+				font-size: 0.45em !important;
+				font-family: 'Montserrat', sans-serif !important;
+				font-weight: 600 !important;
+				color: var(--favor-blue) !important;
+				text-transform: uppercase;
+				letter-spacing: 0.2em;
+				margin-bottom: 0.15em !important;
+			}
+
+			/* ── Solution overview cards ──────────────────────────────────── */
+			.solution-grid {
+				display: flex;
+				justify-content: space-around;
+				align-items: flex-start;
+				margin-top: 1.5em;
+				gap: 1em;
+			}
+			.solution-card {
+				text-align: center;
+				width: 28%;
+				background: var(--favor-recessed);
+				border-radius: 8px;
+				padding: 1em 0.75em;
+			}
+			.solution-card h4 {
+				margin: 0.5em 0 0.25em;
+				font-size: 0.65em;
+				color: var(--favor-blue);
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+			}
+			.solution-card strong {
+				font-size: 1em;
+				color: var(--favor-navy);
+			}
+			.solution-card p {
+				font-size: 0.6em;
+				color: var(--favor-mid);
+				margin: 0.5em 0 0;
+			}
+
+			/* ── Coverage stats ───────────────────────────────────────────── */
+			.coverage-row {
+				display: flex;
+				justify-content: center;
+				gap: 2em;
+				margin-top: 0.75em;
+			}
+			.coverage-stat { text-align: center; }
+			.coverage-stat .num {
+				font-family: 'Anton', sans-serif;
+				font-size: 1.6em;
+				color: var(--favor-blue);
+			}
+			.coverage-stat .label {
+				font-size: 0.55em;
+				color: var(--favor-mid);
+			}
+
+			/* ── Screenshot placeholder ───────────────────────────────────── */
+			.screenshot-placeholder {
+				border: 2px dashed #C8C2B5;
+				border-radius: 6px;
+				padding: 2em;
+				color: #C8C2B5;
+				font-size: 0.7em;
+				margin: 0.75em auto;
+				width: 70%;
+			}
+
+			/* ── Slides with dark navy background ─────────────────────────── */
+			.reveal .slides section.navy-slide h1,
+			.reveal .slides section.navy-slide h2,
+			.reveal .slides section.navy-slide h3,
+			.reveal .slides section.navy-slide p,
+			.reveal .slides section.navy-slide li {
+				color: var(--favor-cream);
+			}
+			.reveal .slides section.navy-slide h1 {
+				color: var(--favor-blue);
+			}
+
+			/* ── Two-column layout helper ─────────────────────────────────── */
+			.two-col {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2em;
+				margin-top: 0.5em;
+			}
+			.two-col h4 {
+				font-size: 0.75em;
+				color: var(--favor-mid);
+				margin-bottom: 0.4em;
+			}
+			.two-col ul {
+				font-size: 0.75em;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<!-- 1. Title -->
+				<section class="navy-slide" data-background-color="#003349">
+					<h1 style="font-size: 3.5em; letter-spacing: 0.05em;">fvr</h1>
+					<h3 style="color: #FAF8F3; font-weight: 500; font-family: 'Montserrat', sans-serif;">AI-Powered Menu Debugging</h3>
+					<p style="color: rgba(250,248,243,0.6); font-size: 0.8em;">AI Hack Week 2025 &nbsp;·&nbsp; Tom Britton (CLI) &amp; Travis Benton (Slackbot)</p>
+					<aside class="notes">
+						- Introduce yourself and Travis, credit the split<br>
+						- "fvr" is the command name — pronounced like "favor"<br>
+						- Developer tool for debugging menu issues using AI<br>
+					</aside>
+				</section>
+
+				<!-- 2. The Problem -->
+				<section>
+					<h2>Something is wrong with a menu.</h2>
+					<ul>
+						<li class="fragment">Data lives across 4+ services: merchant, location, menu, hydration</li>
+						<li class="fragment">Complex state: feature flags, cache versions, permissions, validation errors</li>
+						<li class="fragment">Tracking it down = many API calls, lots of context-switching</li>
+					</ul>
+					<aside class="notes">
+						- Classic support scenario: message from content team message, menu looks wrong<br>
+						- To diagnose you need merchant status, location config, menu validation, cache state, feature flags — a combination of API calls and digging through FPP.<br>
+						- Requires deep domain knowledge just to know where to look<br>
+					</aside>
+				</section>
+
+				<!-- 3. The Solution -->
+				<section>
+					<h2>The Solution</h2>
+					<div class="solution-grid">
+						<div class="solution-card fragment">
+							<div style="font-size: 1.8em; margin-bottom: 0.25em;">&#x1F5A5;</div>
+							<h4>Stage 1</h4>
+							<strong>CLI</strong>
+							<p>Pull all related data in one place</p>
+						</div>
+						<div class="solution-card fragment">
+							<div style="font-size: 1.8em; margin-bottom: 0.25em;">&#x1F916;</div>
+							<h4>Stage 2</h4>
+							<strong>Claude Plugin</strong>
+							<p>Ask questions in natural language</p>
+						</div>
+						<div class="solution-card fragment">
+							<div style="font-size: 1.8em; margin-bottom: 0.25em;">&#x1F4AC;</div>
+							<h4>Stage 3</h4>
+							<strong>Slackbot</strong>
+							<p>Available company-wide, no install</p>
+						</div>
+					</div>
+					<aside class="notes">
+						- Three stages, each builds on the last<br>
+						- Stage 1 is purely a developer tool; Stage 2 makes it conversational; Stage 3 opens it to everyone<br>
+					</aside>
+				</section>
+
+				<!-- 4. Stage 1 — The CLI -->
+				<section>
+					<p class="stage-label">Stage 1</p>
+					<h2>The CLI</h2>
+					<div class="two-col">
+						<div>
+							<h4>Why CLI?</h4>
+							<ul>
+								<li class="fragment">AI agents excel at driving CLIs</li>
+								<li class="fragment">Less complexity than MCP</li>
+								<li class="fragment">SKILL.md runbook embedded in the binary</li>
+							</ul>
+						</div>
+						<div>
+							<h4>Why not Postman / raw API?</h4>
+							<ul>
+								<li class="fragment">Output formatted for humans<br><span style="color: #46575E; font-size:0.85em;">(AGENT CONTEXT blocks)</span></li>
+								<li class="fragment">Saves tokens vs raw JSON</li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">
+						- AI agents are great at reading help text and chaining commands — CLIs play to that strength<br>
+						- MCP requires a running server and more infrastructure; CLI is just a binary<br>
+						- SKILL.md is a diagnostic runbook — tells Claude exactly how to use the tool and what to look for<br>
+						- Raw API responses are noisy; fvr strips and formats data so Claude spends tokens on reasoning, not parsing<br>
+					</aside>
+				</section>
+
+				<!-- 5. CLI Capabilities -->
+				<section>
+					<p class="stage-label">Stage 1</p>
+					<h2>CLI Capabilities</h2>
+					<pre><code class="language-bash" data-trim>
+fvr auth                # login / logout
+fvr merchant            # get, search, locations, accounts
+fvr location            # get, debug
+fvr menu                # get, list, validate, version, cache-status, cache-clear
+fvr plugin install      # registers SKILL.md with Claude Code
+					</code></pre>
+					<aside class="notes">
+						- Written in Go — single binary, no install dependencies for users<br>
+						- Covers the full diagnostic surface: merchant → location → menu → cache<br>
+						- `location debug` runs a set of P4 diagnostic checks<br>
+						- `menu validate` calls the validation service directly<br>
+						- `plugin install` is what wires it into Claude Code<br>
+					</aside>
+				</section>
+
+				<!-- 6. Stage 2 — Claude Plugin -->
+				<section>
+					<p class="stage-label">Stage 2</p>
+					<h2>The Claude Plugin</h2>
+					<p style="font-size: 0.8em;"><code>fvr plugin install</code> &rarr; SKILL.md registered with Claude Code</p>
+					<pre class="fragment"><code class="language-bash" data-trim style="font-size: 0.75em;">
+# Ask Claude Code:
+"Why is the Happy Chicks menu showing the wrong items?"
+
+# Claude autonomously drives:
+fvr merchant search "Happy Chicks"        # → retailer UUID
+fvr merchant locations &lt;retailer-uuid&gt;    # → location list + legacy IDs
+fvr menu validate &lt;legacy-id&gt;            # → validation errors
+fvr menu cache-status &lt;legacy-id&gt;        # → stale cache detected
+					</code></pre>
+					<p class="fragment" style="font-size: 0.75em;">Produces a full diagnostic report with root cause &amp; next steps.</p>
+					<aside class="notes">
+						- One install command, then just talk to Claude normally<br>
+						- Claude reads the SKILL.md runbook and knows exactly what commands to run in what order<br>
+						- Handles ID translation automatically — UUIDs vs legacy IDs, Claude figures it out<br>
+						- The final report is surprisingly good: root cause, affected entities, recommended action<br>
+						- What used to take 20 minutes of manual API calls takes about 30 seconds<br>
+					</aside>
+				</section>
+
+				<!-- 6b. Demo -->
+				<section class="navy-slide" data-background-color="#003349">
+					<h1>Demo</h1>
+					<p>Claude Code plugin &mdash; ask a question about a menu</p>
+					<aside class="notes">
+						CLI directly:<br>
+						- fvr merchant search "Whataburger"<br>
+						- fvr merchant locations 60708bc1c2a154467b6dd81d<br>
+						- fvr menu validate 126273<br>
+						<br>
+						Then hand off to Claude Code:<br>
+            - Can you tell me what's up with the Whataburger menu on 290 in Manor in QA?<br>
+						<br>
+						- Let it run — resist filling the silence<br>
+						- Point out the commands Claude chooses as it goes<br>
+					</aside>
+				</section>
+
+				<!-- 7. Stage 3 — Slackbot -->
+				<section>
+					<p class="stage-label">Stage 3</p>
+					<h2>Slackbot</h2>
+					<p style="font-size: 0.85em;">Same capabilities, available company-wide &mdash; built by Travis Benton</p>
+					<img src="assets/slackbot-screenshot.png" style="max-height: 350px;" />
+					<p class="fragment" style="font-size: 0.75em; color: #46575E;">No install required &mdash; accessible to non-engineering teams</p>
+					<aside class="notes">
+						- Travis took the CLI and wired it into a Slackbot<br>
+						- Same underlying tool, same SKILL.md — no code duplication<br>
+						- Support and ops teams can use it without any setup<br>
+						- Hand off to Travis if he's present to speak to the implementation<br>
+					</aside>
+				</section>
+
+				<!-- 8. Building Methodology -->
+				<section>
+					<h2>Building Methodology</h2>
+					<p style="font-size: 0.6em; color: #46575E; margin-bottom: 0.5em;">Have used a heavy spec-driven workflow in the past resulting in great tedium and poor results. Decided to try a just-in-time planning approach for this project. Good results.</p>
+					<ol style="font-size: 0.72em;">
+						<li class="fragment">Brainstorm in web chat &mdash; Opus model</li>
+						<li class="fragment">Export PRD &rarr; <code>docs/</code> directory</li>
+						<li class="fragment">Claude Code reads PRD &rarr; <code>plan.md</code> with checkboxes</li>
+						<li class="fragment">Per epic: refine &rarr; story markdown files</li>
+						<li class="fragment">Per story: Plan mode &rarr; implementation plan first</li>
+						<li class="fragment">Implement with manual confirmation of every edit using TDD methodology</li>
+						<li class="fragment">Code review agent after each story</li>
+						<li class="fragment">Fix &rarr; commit &rarr; next story</li>
+					</ol>
+					<p class="fragment" style="font-size: 0.85em;">
+						Coverage: <strong>78.9%</strong> overall &nbsp;&middot;&nbsp; core packages: <strong>95&ndash;100%</strong>
+					</p>
+					<aside class="notes">
+						- Previous experience with BMAD: too much upfront design, felt like writing documentation for documentation<br>
+						- JIT approach: plan just enough to start, then let the work inform the next step<br>
+						- Confirming every edit kept me in the loop — AI didn't go rogue, I understood all the code<br>
+						- TDD + code review agent after each story caught issues early, kept quality high<br>
+						- Coverage numbers reflect that discipline — not an afterthought<br>
+					</aside>
+				</section>
+
+				<!-- 9. Why Go -->
+				<section>
+					<h2>Why Go?</h2>
+					<ul>
+						<li class="fragment">Simple language &mdash; less surface area for AI to get wrong</li>
+						<li class="fragment">No runtime needed &mdash; no Node.js, Python, or Java to install</li>
+						<li class="fragment">Compiles to a single binary &mdash; trivial distribution</li>
+						<li class="fragment">Static asset embedding &mdash; SKILL.md lives inside the binary</li>
+						<li class="fragment">Explicit error handling</li>
+					</ul>
+					<aside class="notes">
+						- Go's simplicity matters for AI-assisted development — fewer footguns, less ambiguity<br>
+						- Distribution was a real concern: `go install` or just copy the binary, nothing else needed<br>
+						- Embedding SKILL.md means the runbook ships with the tool automatically — no separate install step<br>
+						- Explicit errors made it easy to spot mistakes during code review<br>
+					</aside>
+				</section>
+
+				<!-- 10. Results & What's Next -->
+				<section>
+					<h2>Results</h2>
+					<p class="fragment">All hack-week scope complete: <strong>CLI + Claude plugin + Slackbot</strong></p>
+					<h3 class="fragment" style="margin-top: 0.75em; font-size: 0.9em;">What&rsquo;s next?</h3>
+					<ul style="font-size: 0.8em;">
+						<li class="fragment">More data sources: alerts, promos, ordering</li>
+						<li class="fragment">TUI (design drafted)</li>
+						<li class="fragment">Permanent Slackbot (depending on security and token cost)</li>
+					</ul>
+					<aside class="notes">
+						- Hit all three stages within hack week — CLI, plugin, and Slackbot all working<br>
+						- The architecture makes adding data sources straightforward — new command, update SKILL.md<br>
+						- TUI design is already drafted in the repo if anyone wants to pick it up<br>
+						- Open to questions<br>
+					</aside>
+				</section>
+
 			</div>
 		</div>
 
@@ -29,13 +406,8 @@
 		<script src="dist/plugin/markdown.js"></script>
 		<script src="dist/plugin/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
 			});
 		</script>
